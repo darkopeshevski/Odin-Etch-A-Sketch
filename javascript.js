@@ -1,5 +1,4 @@
 const mamaDiv = document.querySelector(".mama");
-const squares = [];
 
 // Creating the 16x16 grid here.
 for (let i = 16; i > 0; i--) {
@@ -11,8 +10,31 @@ for (let i = 16; i > 0; i--) {
     const cell = document.createElement('div');
     cell.className = 'square';
     row.appendChild(cell);
-    squares.push(cell);
   }
 };
 
-console.log(squares);
+const allSquares = document.querySelectorAll('.square');
+let flag = false;
+
+// Pressing and coloring the squares.
+allSquares.forEach(square => {
+
+  square.addEventListener('mousedown', function() {
+    square.style.backgroundColor = 'black';
+    flag = true;
+  });
+
+  square.addEventListener('mousemove', function() {
+    if (flag === true) {
+      square.style.backgroundColor = 'black';
+    }
+  });
+
+  square.addEventListener('mouseup', function() {
+    flag = false;
+  });
+
+});
+
+
+
