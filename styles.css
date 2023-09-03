@@ -10,7 +10,16 @@ body {
 .mama {
   display: flex;
   flex-direction: column;
-  margin-top: 50px;
+  justify-content: center;
+
+}
+
+.rows-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .row {
@@ -21,4 +30,27 @@ body {
   width: 30px;
   height: 30px;
   border: 1px solid black;
+}
+
+.fix-grid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+}
+
+.top-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+  gap: 20px;
+}
+
+.reset-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  width: 200px;
+  height: 40px;
 }
