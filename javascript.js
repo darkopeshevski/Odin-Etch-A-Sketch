@@ -5,6 +5,7 @@ const rowsContainer = document.createElement("div");
 const resetGridButton = document.querySelector(".reset-btn");
 const gridDropdown = document.querySelector(".choose-size");
 
+
 let inputValue = 0; // A constant to hold the input value.
 
 rowsContainer.className = 'rows-container';
@@ -22,19 +23,17 @@ gridDropdown.addEventListener('change', function() {
   const dropdownSelection = gridDropdown.value;
 
   if (dropdownSelection === 'small') {
-    rowsContainer.style.marginTop = '20px';
+    
     deleteGrid()
     createGrid(16, 16, 250);
     colorTheSquares();
   }
   else if (dropdownSelection === 'medium') {
-    rowsContainer.style.marginTop = '0px';
     deleteGrid()
     createGrid(16, 16, 350);
     colorTheSquares();
   }
   else {
-    rowsContainer.style.marginTop = '0px';
     deleteGrid()
     createGrid(16, 16, 500);
     colorTheSquares();
@@ -78,6 +77,7 @@ inputElement.addEventListener('keydown', function(event) {
 });
 
 
+// Function that creates the grid.
 function createGrid(xSquares, ySquares, width) {
   
   let squareSize = width / xSquares;
@@ -108,26 +108,38 @@ function deleteGrid() {
 
 // Function that colors the squares based on mouse events.
 function colorTheSquares() {
-
+  
   const allSquares = document.querySelectorAll('.square');
   let flag = false;
 
   allSquares.forEach(square => {
 
     square.addEventListener('mousedown', function() {
-      square.style.backgroundColor = 'black';
+      let red = generateRandomNum();
+      let blue = generateRandomNum();
+      let green = generateRandomNum();
+      square.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`;
       flag = true;
     });
 
     square.addEventListener('mouseover', function() {
       if (flag === true) {
-        square.style.backgroundColor = 'black';
+        let red = generateRandomNum();
+        let blue = generateRandomNum();
+        let green = generateRandomNum();
+        square.style.backgroundColor = `rgb(${red}, ${blue}, ${green})`;
       }
     });
 
     square.addEventListener('mouseup', function() {
       flag = false;
     });
-
   });
 };
+
+
+function generateRandomNum() {
+  const num = Math.random();
+  let roundedNumber = Math.floor(255 * num);
+  return roundedNumber;
+}
