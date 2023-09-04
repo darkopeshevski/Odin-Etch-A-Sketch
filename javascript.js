@@ -3,29 +3,56 @@ const mamaDiv = document.querySelector(".mama");
 const inputElement = document.querySelector(".fix-grid");
 const rowsContainer = document.createElement("div");
 const resetGridButton = document.querySelector(".reset-btn");
+const gridDropdown = document.querySelector(".choose-size");
 
 let inputValue = 0; // A constant to hold the input value.
 
 rowsContainer.className = 'rows-container';
 mamaDiv.appendChild(rowsContainer);
 
-
 // Creating the starting GRID here.
-createGrid(16, 16);
+createGrid(16, 16, 500);
 
 // Color the squares of the starting grid.
 colorTheSquares();
+
+// Functionality where a dropdown field is used to select the size of the grid.
+gridDropdown.addEventListener('change', function() {
+
+  const dropdownSelection = gridDropdown.value;
+
+  if (dropdownSelection === 'small') {
+    rowsContainer.style.marginTop = '20px';
+    deleteGrid()
+    createGrid(16, 16, 250);
+    colorTheSquares();
+  }
+  else if (dropdownSelection === 'medium') {
+    rowsContainer.style.marginTop = '0px';
+    deleteGrid()
+    createGrid(16, 16, 350);
+    colorTheSquares();
+  }
+  else {
+    rowsContainer.style.marginTop = '0px';
+    deleteGrid()
+    createGrid(16, 16, 500);
+    colorTheSquares();
+  }
+
+});
+
 
 // Reset the grid and delete the colored squares.
 resetGridButton.addEventListener('click', function() {
   deleteGrid();
 
   if (inputValue === 0) {
-    createGrid(16, 16);
+    createGrid(16, 16, 500);
     colorTheSquares();
   }
   else {
-    createGrid(inputValue, inputValue);
+    createGrid(inputValue, inputValue, 500);
     colorTheSquares();
   }
 });
@@ -44,16 +71,16 @@ inputElement.addEventListener('keydown', function(event) {
     }
     else {
       deleteGrid();
-      createGrid(inputValue, inputValue);
+      createGrid(inputValue, inputValue, 500);
       colorTheSquares();
     }
   }
 });
 
 
-function createGrid(xSquares, ySquares) {
-  const totalWidth = 500;
-  let squareSize = totalWidth / xSquares;
+function createGrid(xSquares, ySquares, width) {
+  
+  let squareSize = width / xSquares;
 
   for (let i = xSquares; i > 0; i--) {
     const row = document.createElement('div');
@@ -104,5 +131,3 @@ function colorTheSquares() {
 
   });
 };
-
-

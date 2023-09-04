@@ -36,7 +36,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  
+  width: 40px;
 }
 
 .top-container {
@@ -46,6 +46,12 @@ body {
   gap: 20px;
 }
 
+.middle-container {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+}
+
 .reset-btn {
   display: flex;
   align-items: center;
@@ -53,4 +59,14 @@ body {
   margin-bottom: 20px;
   width: 200px;
   height: 40px;
+}
+
+.group {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+  gap: 10px;
+}
+.choose-size {
+  width: 75px;
 }
